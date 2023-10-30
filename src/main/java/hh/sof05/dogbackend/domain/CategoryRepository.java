@@ -2,6 +2,6 @@ package hh.sof05.dogbackend.domain;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface ManufacturerRepository extends CrudRepository<Manufacturer, Long> {
-
+public interface CategoryRepository extends CrudRepository<Category, Long>{
+    
 }

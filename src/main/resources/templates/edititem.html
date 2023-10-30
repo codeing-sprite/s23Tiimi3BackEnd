@@ -3,30 +3,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Edit item</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<title>Edit item</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 
 <body>
-    <h1>Edit item</h1>
-    <div>
+	<h1>Edit item</h1>
+	<div>
 
-        <form th:object="${item}" th:action="@{../saveitem}" action="#" method="post">
-            <input type="hidden" th:field="*{id}" class="form-control" />
-            <input type="text" th:field="*{type}" />
-            <input type="text" th:field="*{colour}"/>
-            <input type="text" th:field="*{size}"/>
-            <input type="text" th:field="*{price}"/>
-        
+		<form th:object="${item}" th:action="@{../saveitem}" action="#" method="post">
+			<input type="hidden" th:field="*{item_id}" class="form-control" />
+			<input type="text" th:field="*{name}" />
+			<input type="text" th:field="*{color}" />
+			<input type="text" th:field="*{size}" />
+			<input type="text" th:field="*{price}" />
 
-            <input type="submit" class="btn btn-success" value="Save"></input>
-            <a href="/items" class="btn btn-danger">Cancel</a>
-        </form>
+			<select id="manufacturerlist" th:field="*{manufacturer}">
+				<option 
+					th:each="manufacturer : ${manufacturers}" 
+					th:value="${manufacturer.manufacturer_id}"
+					th:text="${manufacturer.name}">
+				</option>
+			</select>
+
+			<select id="categorylist" th:field="*{category}">
+				<option 
+					th:each="category : ${categories}" 
+					th:value="${category.category_id}"
+					th:text="${category.name}">
+				</option>
+			</select>
+
+			<input type="submit" class="btn btn-success" value="Save"></input>
+			<a href="/items" class="btn btn-danger">Cancel</a>
+		</form>
 
 
 
-    </div>
+	</div>
 </body>
 
 </html>

@@ -21,21 +21,25 @@
                 <th>Colour</th>
                 <th>Size</th>
                 <th>Price</th>
+                <th>Manufacturer</th>
+                <th>Category</th>
                 <th></th>
                 <th></th>
             </tr>
 
             <tr th:each="item : ${items}">
-                <td th:text="${item.type}"></td>
-                <td th:text="${item.colour}"></td>
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.color}"></td>
                 <td th:text="${item.size}"></td>
                 <td th:text="${item.price}"></td>
-                <td><a th:href="@{/edit/{id}(id=${item.id})}" class="btn btn-warning">Edit</a></td>
-                <td><a th:href="@{/delete/{id}(id=${item.id})}" class="btn btn-danger">Delete</a></td>
+                <td th:text="${item.manufacturer.name}"></td>
+                <td th:text="${item.category.name}"></td>
+                <td><a th:href="@{/edit/{id}(id=${item.item_id})}" class="btn btn-warning">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${item.item_id})}" class="btn btn-danger">Delete</a></td>
 
             </tr>
         </table>
-        <a href="/additem">Add</a>
+        <a href="/additem" class="btn btn-primary">Add</a>
     </div>
 </body>
 
