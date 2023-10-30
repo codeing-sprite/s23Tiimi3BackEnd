@@ -27,6 +27,11 @@ public class Item {
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
 
     public Item() {}
 
