@@ -12,13 +12,13 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Item {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, updatable = false)
     private long item_id;
-    private String type;
-    private String colour;
+    private String name;
+    private String color;
     private String size;
     private double price;
 
@@ -32,38 +32,40 @@ public class Item {
     @JoinColumn(name = "category_id")
     private Category category;
 
-
-    public Item() {}
-
-    public Item(String type, String colour, String size, double price) {
-        this.type = type;
-        this.colour = colour;
-        this.size = size;
-        this.price = price;
+    public Item() {
     }
 
-    public long getId() {
+    public Item(String name, String color, String size, double price, Manufacturer manufacturer, Category category) {
+        this.name = name;
+        this.color = color;
+        this.size = size;
+        this.price = price;
+        this.manufacturer = manufacturer;
+        this.category = category;
+    }
+
+    public long getItem_id() {
         return item_id;
     }
 
-    public void setId(long item_id) {
+    public void setItem_id(long item_id) {
         this.item_id = item_id;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getColour() {
-        return colour;
+    public String getColor() {
+        return color;
     }
 
-    public void setColour(String colour) {
-        this.colour = colour;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getSize() {
@@ -80,5 +82,21 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
