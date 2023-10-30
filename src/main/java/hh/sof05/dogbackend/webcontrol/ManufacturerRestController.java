@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import hh.sof05.dogbackend.domain.Manufacturer;
 import hh.sof05.dogbackend.domain.ManufacturerRepository;
 
+
 @RestController
 public class ManufacturerRestController {
     
