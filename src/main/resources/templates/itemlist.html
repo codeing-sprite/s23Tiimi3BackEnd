@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <title>Items</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <h1>Items</h1>
+
+    </div>
+
+
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Type</th>
+                <th>Colour</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            <tr th:each="item : ${items}">
+                <td th:text="${item.type}"></td>
+                <td th:text="${item.colour}"></td>
+                <td th:text="${item.size}"></td>
+                <td th:text="${item.price}"></td>
+                <td><a th:href="@{/edit/{id}(id=${item.id})}" class="btn btn-warning">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${item.id})}" class="btn btn-danger">Delete</a></td>
+
+            </tr>
+        </table>
+        <a href="/additem">Add</a>
+    </div>
+</body>
+
+</html>

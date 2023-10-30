@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add item</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <h1>Add item</h1>
+    <div>
+        <form th:object="${item}" th:action="@{saveitem}" action="#" method="post">
+            <label for="type">Type: </label>
+            <input type="text" id="type" th:field="*{type}">
+            <label for="colour">Colour: </label>
+            <input type="text" id="colour" th:field="*{colour}">
+            <label for="size">Size: </label>
+            <input type="text" id="size" th:field="*{size}">
+            <label for="price">Price: </label>
+            <input type="text" id="price" th:field="*{price}">
+
+            <input type="submit" value="Save" class="btn btn-primary"></input>
+            <a href="/items" class="btn btn-danger">Cancel</a>
+        </form>
+
+    </div>
+</body>
+
+</html>
