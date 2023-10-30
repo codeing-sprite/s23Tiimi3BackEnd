@@ -16,16 +16,16 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, updatable = false)
-    private long id;
+    private long item_id;
     private String type;
     private String colour;
     private String size;
     private double price;
 
-    // @JsonIgnore
-    // @ManyToOne
-    // @JoinColumn(name = "manufacturer_id")
-    // private Manufacturer manufactorer;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_id")
+    private Manufacturer manufacturer;
 
 
     public Item() {}
@@ -38,11 +38,11 @@ public class Item {
     }
 
     public long getId() {
-        return id;
+        return item_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(long item_id) {
+        this.item_id = item_id;
     }
 
     public String getType() {
@@ -76,7 +76,4 @@ public class Item {
     public void setPrice(double price) {
         this.price = price;
     }
-
-    
-
 }
