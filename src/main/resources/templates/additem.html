@@ -11,7 +11,7 @@
     <h1>Add item</h1>
     <div>
         <form th:object="${item}" th:action="@{saveitem}" action="#" method="post">
-            <label for="type">Type: </label>
+            <label for="name">name: </label>
             <input type="text" id="name" th:field="*{name}">
             <label for="colour">Colour: </label>
             <input type="text" id="color" th:field="*{color}">

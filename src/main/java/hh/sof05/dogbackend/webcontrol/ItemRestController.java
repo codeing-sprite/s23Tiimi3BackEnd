@@ -15,9 +15,9 @@ public class ItemRestController {
     @Autowired
     private ItemRepository itemRepository;
 
-    @GetMapping("/items")
-    List<Item> listAllItems() {
-        return (List<Item>) itemRepository.findAll();
-    }
+    // @GetMapping("/items")
+    // List<Item> listAllItems() {
+    //     return (List<Item>) itemRepository.findAll();
+    // }
 
 }
