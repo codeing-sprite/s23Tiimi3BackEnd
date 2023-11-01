@@ -22,10 +22,10 @@ public class ItemRestController {
          return (List<Item>) itemRepository.findAll();
      }
 
-     @GetMapping("restitems/{id}")
-     Optional<Item> findItem(@PathVariable("id") long itemId) {
+     @GetMapping("/restitems/{id}")
+     Optional<Item> getItemById(@PathVariable("id") long itemId) {
         return itemRepository.findById(itemId);
-     }
+     } 
 
 
 }
