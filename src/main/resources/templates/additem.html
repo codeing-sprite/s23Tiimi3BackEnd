@@ -11,7 +11,7 @@
     <h1>Add item</h1>
     <div>
         <form th:object="${item}" th:action="@{saveitem}" action="#" method="post">
-            <label for="name">name: </label>
+            <label for="name">Name: </label>
             <input type="text" id="name" th:field="*{name}">
             <label for="color">Color: </label>
             <input type="text" id="color" th:field="*{color}">
@@ -31,7 +31,7 @@
             </select>
 
             <input type="submit" value="Save" class="btn btn-primary"></input>
-            <a href="/items" class="btn btn-danger">Cancel</a>
+            <a href="/itemlist" class="btn btn-danger">Cancel</a>
         </form>
 
     </div>

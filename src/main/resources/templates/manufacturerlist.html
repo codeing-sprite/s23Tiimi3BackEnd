@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <title>Manufacturers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <h1>Manufacturers</h1>
+
+    </div>
+
+
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+
+            <tr th:each="manufacturer : ${manufacturers}">
+                <td th:text="${manufacturer.name}"></td>
+                <td><a th:href="@{manufacturerlist/delete/{manufacturer_id}(manufacturer_id=${manufacturer.manufacturer_id})}" class="btn btn-danger">Delete</a></td>
+            </tr>
+        </table>
+        <!-- <a href="/additem" class="btn btn-primary">Add item</a> -->
+        <a href="/addmanufacturer" class="btn btn-primary">Add manufacturer</a>
+        <a href="/itemlist" class="btn btn-danger">Cancel</a>
+    </div>
+</body>
+
+</html>

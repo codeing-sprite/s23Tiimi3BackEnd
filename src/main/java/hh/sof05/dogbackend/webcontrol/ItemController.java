@@ -27,7 +27,7 @@ public class ItemController {
     // Add @PreAuthorize to all methods?
 
     // List all items
-    @GetMapping("/items")
+    @GetMapping("/itemlist")
     public String listItems(Model model) {
         model.addAttribute("items", itemRepository.findAll());
         model.addAttribute("categories", categoryRepository.findAll());
@@ -48,14 +48,14 @@ public class ItemController {
     @PostMapping("/saveitem")
     public String saveItem(Item item) {
         itemRepository.save(item);
-        return "redirect:items";
+        return "redirect:itemlist";
     }
 
     // Delete an item from itemlist based on its id value
-    @GetMapping("/delete/{id}")
-    public String deleteItem(@PathVariable("id") Long itemId, Model model) {
+    @GetMapping("/delete/{item_id}")
+    public String deleteItem(@PathVariable("item_id") Long itemId, Model model) {
         itemRepository.deleteById(itemId);
-        return "redirect:../items";
+        return "redirect:../itemlist";
     }
 
     // Edit an item on itemlist based on its id value

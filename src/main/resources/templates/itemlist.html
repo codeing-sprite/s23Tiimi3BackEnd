@@ -35,12 +35,12 @@
                 <td th:text="${item.manufacturer.name}"></td>
                 <td th:text="${item.category.name}"></td>
                 <td><a th:href="@{/edit/{id}(id=${item.item_id})}" class="btn btn-warning">Edit</a></td>
-                <td><a th:href="@{/delete/{id}(id=${item.item_id})}" class="btn btn-danger">Delete</a></td>
+                <td><a th:href="@{/delete/{item_id}(item_id=${item.item_id})}" class="btn btn-danger">Delete</a></td>
 
             </tr>
         </table>
         <a href="/additem" class="btn btn-primary">Add item</a>
-        <a href="/addmanufacturer" class="btn btn-primary">Add manufacturer</a>
+        <a href="/manufacturerlist" class="btn btn-primary">Manufacturers</a>
     </div>
 </body>
 

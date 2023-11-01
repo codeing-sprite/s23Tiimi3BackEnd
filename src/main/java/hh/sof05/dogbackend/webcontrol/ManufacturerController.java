@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import hh.sof05.dogbackend.domain.Manufacturer;
@@ -15,6 +16,12 @@ public class ManufacturerController {
     @Autowired
     ManufacturerRepository manufacturerRepository;
 
+    @GetMapping("/manufacturerlist")
+    public String listManufacturers(Model model) {
+        model.addAttribute("manufacturers", manufacturerRepository.findAll());
+        return "manufacturerlist";
+    }
+
     @GetMapping("/addmanufacturer")
     public String addManufacturer(Model model) {
         model.addAttribute("manufacturer", new Manufacturer());
@@ -24,7 +31,14 @@ public class ManufacturerController {
     @PostMapping("/savemanufacturer")
     public String saveManufacturer(Manufacturer manufacturer) {
         manufacturerRepository.save(manufacturer);
-        return ("redirect:items");
+        return ("redirect:manufacturerlist");
+    }
+
+    @GetMapping("manufacturerlist/delete/{manufacturer_id}")
+    public String deleteManufacturer(@PathVariable("manufacturer_id") Long manufacturerId, Model model) {
+        manufacturerRepository.deleteById(manufacturerId);
+
+        return "redirect:../../manufacturerlist";
     }
 
 }
