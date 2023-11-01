@@ -13,14 +13,15 @@
         <form th:object="${item}" th:action="@{saveitem}" action="#" method="post">
             <label for="name">name: </label>
             <input type="text" id="name" th:field="*{name}">
-            <label for="colour">Colour: </label>
+            <label for="color">Color: </label>
             <input type="text" id="color" th:field="*{color}">
             <label for="size">Size: </label>
             <input type="text" id="size" th:field="*{size}">
             <label for="price">Price: </label>
             <input type="text" id="price" th:field="*{price}">
             <select id="categorylist" th:field="*{category}">
-                <option th:each="category : ${categories}" th:value="${category.category_id}" th:text="${category.name}">
+                <option th:each="category : ${categories}" th:value="${category.category_id}"
+                    th:text="${category.name}">
                 </option>
             </select>
             <select id="manufacturerlist" th:field="*{manufacturer}">
