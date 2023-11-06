@@ -16,7 +16,7 @@ public class Manufacturer {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long manufacturer_id;
+    private long id;
     private String name;
 
     @JsonIgnore
@@ -29,12 +29,12 @@ public class Manufacturer {
         this.name = name;
     }
 
-    public long getManufacturer_id() {
-        return manufacturer_id;
+    public long getId() {
+        return id;
     }
 
-    public void setManufacturer_id(long manufacturer_id) {
-        this.manufacturer_id = manufacturer_id;
+    public void id(long id) {
+        this.id = id;
     }
 
     public String getName() {

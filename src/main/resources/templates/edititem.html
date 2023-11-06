@@ -13,7 +13,7 @@
 	<div>
 
 		<form th:object="${item}" th:action="@{../saveitem}" action="#" method="post">
-			<input type="hidden" th:field="*{item_id}" class="form-control" />
+			<input type="hidden" th:field="*{id}" class="form-control" />
 			<input type="text" th:field="*{name}" />
 			<input type="text" th:field="*{color}" />
 			<input type="text" th:field="*{size}" />
@@ -22,7 +22,7 @@
 			<select id="manufacturerlist" th:field="*{manufacturer}">
 				<option 
 					th:each="manufacturer : ${manufacturers}" 
-					th:value="${manufacturer.manufacturer_id}"
+					th:value="${manufacturer.id}"
 					th:text="${manufacturer.name}">
 				</option>
 			</select>
@@ -30,7 +30,7 @@
 			<select id="categorylist" th:field="*{category}">
 				<option 
 					th:each="category : ${categories}" 
-					th:value="${category.category_id}"
+					th:value="${category.id}"
 					th:text="${category.name}">
 				</option>
 			</select>

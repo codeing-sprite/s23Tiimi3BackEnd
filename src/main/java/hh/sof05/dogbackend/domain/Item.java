@@ -15,8 +15,8 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false, updatable = false)
-    private long item_id;
+    @Column(nullable = false, updatable = false)
+    private long id;
     private String name;
     private String color;
     private String size;
@@ -44,12 +44,12 @@ public class Item {
         this.category = category;
     }
 
-    public long getItem_id() {
-        return item_id;
+    public long getId() {
+        return id;
     }
 
-    public void setItem_id(long item_id) {
-        this.item_id = item_id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

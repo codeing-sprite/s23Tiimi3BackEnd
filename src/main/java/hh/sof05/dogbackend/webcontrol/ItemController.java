@@ -52,8 +52,8 @@ public class ItemController {
     }
 
     // Delete an item from itemlist based on its id value
-    @GetMapping("/delete/{item_id}")
-    public String deleteItem(@PathVariable("item_id") Long itemId, Model model) {
+    @GetMapping("/delete/{id}")
+    public String deleteItem(@PathVariable("id") Long itemId, Model model) {
         itemRepository.deleteById(itemId);
         return "redirect:../itemlist";
     }

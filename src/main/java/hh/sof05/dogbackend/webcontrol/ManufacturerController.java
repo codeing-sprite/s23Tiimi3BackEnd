@@ -34,8 +34,8 @@ public class ManufacturerController {
         return ("redirect:manufacturerlist");
     }
 
-    @GetMapping("manufacturerlist/delete/{manufacturer_id}")
-    public String deleteManufacturer(@PathVariable("manufacturer_id") Long manufacturerId, Model model) {
+    @GetMapping("manufacturerlist/delete/{id}")
+    public String deleteManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
         manufacturerRepository.deleteById(manufacturerId);
 
         return "redirect:../../manufacturerlist";
