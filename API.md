@@ -7,7 +7,7 @@ This document describes what REST services this application provides. It contain
 3.	Get all categories -> http://localhost:8080/rest/categories/ 
 4.	Get a category by id -> http://localhost:8080/rest/categories/{id} 
 5.	Get all items in a category -> http://localhost:8080/rest/categories/{id}/items
-6.	Get all manufactures -> http://localhost:8080/rest/manufacturers
+6.	Get all manufacturers -> http://localhost:8080/rest/manufacturers
 7.	Get a manufacturer by id -> http://localhost:8080/rest/manufacturers/{id}
 
 
@@ -111,6 +111,7 @@ Request body: -
 Response example below:
 
 ```
+[
   {
     "id": 1,
     "name": "Dog jacket",
@@ -138,6 +139,7 @@ Request body: -
 Response example below:
 
 ```
+[
   {
     "id": 1,
     "name": "Hurtta"
