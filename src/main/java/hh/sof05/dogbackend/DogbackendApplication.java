@@ -45,12 +45,10 @@ public class DogbackendApplication {
 			itemRepository.save(new Item("Dog socks", "Green", "Extra-large", 99.99, manufacturer3, category1));
 			itemRepository.save(new Item("Dogtoy", "Orange", "Small", 7.95, manufacturer2, category3));
 
-
 			log.info("Saving a couple of users");
-			
-			userRepository.save(new User("admin", "$2a$12$Swc4EnmCFEa5blsTGcgd5e9LMCopsBsZSoun.TtPSOot7.sj6SO.6\r\n", "admin@admin.com", "ADMIN"));
-			userRepository.save(new User("user", "$2a$12$wZ1mcG99PuNpGnFf.ztLU.oFh3jb4Vz0V/mjmN4yYjne3EQsMLii.", "user@user.com", "USER"));
+
+			userRepository.save(new User("admin", "$2a$12$aQLOSgr68.ZYV71E32Hb/Ou3nO5uMS3fO/z3wp9hYsbCeJFKjr9fy",
+					"admin@admin.com", "ADMIN"));
 		};
 	};
 }
-		
