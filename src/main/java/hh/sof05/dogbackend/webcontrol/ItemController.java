@@ -1,6 +1,7 @@
 package hh.sof05.dogbackend.webcontrol;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,7 @@ public class ItemController {
 
     // List all items
     @GetMapping("/itemlist")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String listItems(Model model) {
         model.addAttribute("items", itemRepository.findAll());
         model.addAttribute("categories", categoryRepository.findAll());
@@ -37,6 +39,7 @@ public class ItemController {
 
     // Add a new item into itemlist
     @GetMapping("/additem")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String addItem(Model model) {
         model.addAttribute("item", new Item());
         model.addAttribute("categories", categoryRepository.findAll());
@@ -46,6 +49,7 @@ public class ItemController {
 
     // Save added/edited item
     @PostMapping("/saveitem")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String saveItem(Item item) {
         itemRepository.save(item);
         return "redirect:itemlist";
@@ -53,6 +57,7 @@ public class ItemController {
 
     // Delete an item from itemlist based on its id value
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String deleteItem(@PathVariable("id") Long itemId, Model model) {
         itemRepository.deleteById(itemId);
         return "redirect:../itemlist";
@@ -60,6 +65,7 @@ public class ItemController {
 
     // Edit an item on itemlist based on its id value
     @GetMapping("/edit/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String editItem(@PathVariable("id") Long itemId, Model model) {
         model.addAttribute(("item"), itemRepository.findById(itemId));
         model.addAttribute("categories", categoryRepository.findAll());

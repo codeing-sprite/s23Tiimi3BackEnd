@@ -13,6 +13,8 @@ import hh.sof05.dogbackend.domain.Item;
 import hh.sof05.dogbackend.domain.ItemRepository;
 import hh.sof05.dogbackend.domain.Manufacturer;
 import hh.sof05.dogbackend.domain.ManufacturerRepository;
+import hh.sof05.dogbackend.domain.User;
+import hh.sof05.dogbackend.domain.UserRepository;
 
 @SpringBootApplication
 public class DogbackendApplication {
@@ -25,7 +27,7 @@ public class DogbackendApplication {
 
 	@Bean
 	public CommandLineRunner commandRunner(ItemRepository itemRepository, CategoryRepository categoryRepository,
-			ManufacturerRepository manufacturerRepository) {
+			ManufacturerRepository manufacturerRepository, UserRepository userRepository) {
 		return (args) -> {
 
 			log.info("Saving a couple of categories");
@@ -41,6 +43,14 @@ public class DogbackendApplication {
 			log.info("Saving a couple of products");
 			itemRepository.save(new Item("Dog jacket", "Blue", "Medium", 26.95, manufacturer1, category1));
 			itemRepository.save(new Item("Dog socks", "Green", "Extra-large", 99.99, manufacturer3, category1));
+			itemRepository.save(new Item("Dogtoy", "Orange", "Small", 7.95, manufacturer2, category3));
+
+
+			log.info("Saving a couple of users");
+			
+			userRepository.save(new User("admin", "$2a$12$Swc4EnmCFEa5blsTGcgd5e9LMCopsBsZSoun.TtPSOot7.sj6SO.6\r\n", "admin@admin.com", "ADMIN"));
+			userRepository.save(new User("user", "$2a$12$wZ1mcG99PuNpGnFf.ztLU.oFh3jb4Vz0V/mjmN4yYjne3EQsMLii.", "user@user.com", "USER"));
 		};
 	};
 }
+		
