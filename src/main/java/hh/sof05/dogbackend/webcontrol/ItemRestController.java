@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import hh.sof05.dogbackend.domain.Item;
 import hh.sof05.dogbackend.domain.ItemRepository;
+import hh.sof05.dogbackend.domain.Manufacturer;
+import hh.sof05.dogbackend.domain.ManufacturerRepository;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -20,6 +22,9 @@ public class ItemRestController {
 
     @Autowired
     private ItemRepository itemRepository;
+    
+    @Autowired
+    private ManufacturerRepository manufacturerRepository;
 
      @GetMapping("/items")
      List<Item> listAllItems() {
@@ -30,5 +35,11 @@ public class ItemRestController {
      Optional<Item> getItemById(@PathVariable("id") long itemId) {
         return itemRepository.findById(itemId);
      } 
+     
+     @GetMapping("manufactureritems/{id}")
+     List<Item> itemsByManufacturer(@PathVariable("id") long manufacturerId) {
+    	 Optional<Manufacturer> manufacturer = manufacturerRepository.findById(manufacturerId);
+    	 return itemRepository.findByManufacturer(manufacturer);
+     }
 
 }
