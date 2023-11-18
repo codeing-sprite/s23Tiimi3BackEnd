@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add user</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <h1>Add user</h1>
+    <div>
+        <form th:object="${user}" th:action="@{saveuser}" action="#" method="post">
+            <label for="name">Username: </label>
+            <input type="text" id="username" th:field="*{username}">
+            <label for="color">Passwordhash: </label>
+            <input type="text" id="passwordHash" th:field="*{passwordHash}">
+            <label for="size">Email: </label>
+            <input type="text" id="email" th:field="*{email}">
+            <label for="price">Role: </label>
+            <input type="text" id="role" th:field="*{role}">
+
+            <input type="submit" value="Save" class="btn btn-primary"></input>
+            <a href="/userlist" class="btn btn-danger">Cancel</a>
+        </form>
+
+    </div>
+</body>
+
+</html>

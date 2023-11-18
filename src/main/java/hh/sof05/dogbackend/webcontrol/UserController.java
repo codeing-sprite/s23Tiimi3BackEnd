@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import hh.sof05.dogbackend.domain.User;
 import hh.sof05.dogbackend.domain.UserRepository;
@@ -18,7 +19,8 @@ public class UserController {
 	
     @GetMapping(value="/userlist")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public String userlist() {
+    public String userlist(Model model) {
+    	model.addAttribute("users", userRepository.findAll());
         return "userlist";
     }
     
@@ -29,7 +31,7 @@ public class UserController {
         return ("adduser");
     }
     
-    @GetMapping(value="/saveuser")
+    @PostMapping(value="/saveuser")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String saveUser(User user) {
     	userRepository.save(user);

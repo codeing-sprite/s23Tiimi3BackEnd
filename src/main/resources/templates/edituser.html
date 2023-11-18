@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Edit user</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+	<h1>Edit user</h1>
+	<div>
+
+		<form th:object="${user}" th:action="@{../saveuser}" action="#" method="post">
+			<input type="hidden" th:field="*{id}" class="form-control" />
+			<input type="text" th:field="*{username}" />
+			<input type="text" th:field="*{passwordHash}" />
+			<input type="text" th:field="*{email}" />
+			<input type="text" th:field="*{role}" />
+
+			<input type="submit" class="btn btn-success" value="Save"></input>
+			<a href="/itemlist" class="btn btn-danger">Cancel</a>
+		</form>
+
+
+
+	</div>
+</body>
+
+</html>

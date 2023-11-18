@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <title>Users</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <h1>Users</h1>
+    <div>
+        <form id="logout" th:action="@{/logout}" method="post">
+            <input class="btn btn-danger" type="submit" value="Sign out" />
+        </form>
+    </div>
+    </div>
+
+
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            <tr th:each="user : ${users}">
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.role}"></td>
+                <td><a th:href="@{/edituser/{id}(id=${user.id})}" class="btn btn-warning">Edit</a></td>
+                <td><a th:href="@{/deleteuser/{id}(id=${user.id})}" class="btn btn-danger">Delete</a></td>
+
+            </tr>
+        </table>
+        <a href="/adduser" class="btn btn-primary">Add user</a>
+        <a href="/itemlist" class="btn btn-danger">Cancel</a>
+    </div>
+</body>
+
+</html>
