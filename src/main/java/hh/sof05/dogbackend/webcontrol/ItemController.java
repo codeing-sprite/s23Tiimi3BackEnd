@@ -34,6 +34,7 @@ public class ItemController {
         model.addAttribute("items", itemRepository.findAll());
         model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("manufacturers", manufacturerRepository.findAll());
+        model.addAttribute("allstock", itemRepository.findAllStock());
         return "itemlist";
     }
 
