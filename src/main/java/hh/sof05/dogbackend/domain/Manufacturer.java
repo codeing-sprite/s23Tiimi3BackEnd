@@ -16,7 +16,7 @@ public class Manufacturer {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String name;
 
     @JsonIgnore
@@ -29,11 +29,11 @@ public class Manufacturer {
         this.name = name;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void id(long id) {
+    public void id(Long id) {
         this.id = id;
     }
 

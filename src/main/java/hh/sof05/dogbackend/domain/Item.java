@@ -1,7 +1,5 @@
 package hh.sof05.dogbackend.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,18 +14,17 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private long id;
+    private Long id;
     private String name;
     private String color;
     private String size;
     private double price;
+    private int stock;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -35,20 +32,21 @@ public class Item {
     public Item() {
     }
 
-    public Item(String name, String color, String size, double price, Manufacturer manufacturer, Category category) {
+    public Item(String name, String color, String size, double price, Manufacturer manufacturer, Category category, int stock) {
         this.name = name;
         this.color = color;
         this.size = size;
         this.price = price;
         this.manufacturer = manufacturer;
         this.category = category;
+        this.stock = stock;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -98,5 +96,13 @@ public class Item {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }
