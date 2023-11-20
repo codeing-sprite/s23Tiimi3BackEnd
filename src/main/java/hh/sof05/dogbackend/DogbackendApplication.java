@@ -41,9 +41,9 @@ public class DogbackendApplication {
 			Manufacturer manufacturer3 = manufacturerRepository.save(new Manufacturer("Ruffwear"));
 
 			log.info("Saving a couple of products");
-			itemRepository.save(new Item("Dog jacket", "Blue", "Medium", 26.95, manufacturer1, category1));
-			itemRepository.save(new Item("Dog socks", "Green", "Extra-large", 99.99, manufacturer3, category1));
-			itemRepository.save(new Item("Dogtoy", "Orange", "Small", 7.95, manufacturer2, category3));
+			itemRepository.save(new Item("Dog jacket", "Blue", "Medium", 26.95, manufacturer1, category1, 10));
+			itemRepository.save(new Item("Dog socks", "Green", "Extra-large", 99.99, manufacturer3, category1, 10));
+			itemRepository.save(new Item("Dogtoy", "Orange", "Small", 7.95, manufacturer2, category3, 5));
 
 			log.info("Saving a couple of users");
 
