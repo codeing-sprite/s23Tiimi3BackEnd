@@ -33,13 +33,13 @@ public class ManufacturerRestController {
     }
 
     @GetMapping("/manufacturers/{id}") 
-    Optional<Manufacturer> getManufacturerById(@PathVariable("id") long manuId) {
-        return manufacturerRepository.findById(manuId);
+    Manufacturer getManufacturerById(@PathVariable("id") long manuId) {
+        return manufacturerRepository.findById(manuId).get();
     }
     
     @GetMapping("manufacturersitems/{id}")
     public @ResponseBody List<Item> itemsByManufacturer(@PathVariable("id") long manufacturerId) {
-   	 Optional<Manufacturer> manufacturer = manufacturerRepository.findById(manufacturerId);
+   	 Manufacturer manufacturer = manufacturerRepository.findById(manufacturerId).get();
    	 return itemRepository.findByManufacturer(manufacturer);
     }
 }
