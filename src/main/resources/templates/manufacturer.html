@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <title>Manufacturers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <h1>Manufacturers</h1>
+
+    </div>
+
+
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td th:text="${manufacturer.name}"></td>
+               
+            </tr>
+        </table>
+
+    </div>
+</body>
+
+</html>

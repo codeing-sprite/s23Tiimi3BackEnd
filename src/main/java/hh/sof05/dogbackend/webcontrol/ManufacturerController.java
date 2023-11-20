@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import hh.sof05.dogbackend.domain.ItemRepository;
 import hh.sof05.dogbackend.domain.Manufacturer;
 import hh.sof05.dogbackend.domain.ManufacturerRepository;
 
@@ -16,6 +17,9 @@ public class ManufacturerController {
 
     @Autowired
     ManufacturerRepository manufacturerRepository;
+
+    @Autowired
+    ItemRepository itemRepository;
 
     @GetMapping("/manufacturerlist")
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -44,6 +48,14 @@ public class ManufacturerController {
         manufacturerRepository.deleteById(manufacturerId);
 
         return "redirect:../../manufacturerlist";
+    }
+
+    @GetMapping("manufacturer/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String listItemsOfManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
+        model.addAttribute("manufacturer", manufacturerRepository.findById(manufacturerId));
+
+        return "manufacturer";
     }
 
 }
