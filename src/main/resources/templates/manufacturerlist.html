@@ -22,7 +22,7 @@
             </tr>
 
             <tr th:each="manufacturer : ${manufacturers}">
-                <td th:text="${manufacturer.name}"></td>
+                <td><a th:href="@{/manufacturer/{id} (id=${manufacturer.id})}" th:text="${manufacturer.name}"></a></td>
                 <td><a th:href="@{manufacturerlist/delete/{id}(id=${manufacturer.id})}" class="btn btn-danger">Delete</a></td>
             </tr>
         </table>

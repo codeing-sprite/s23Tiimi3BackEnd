@@ -3,30 +3,33 @@
     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
-    <title>Manufacturers</title>
+    <title th:text="${manufacturer.name}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 
 <body>
-    <h1>Manufacturers</h1>
-
-    </div>
-
+    <h1 th:text="${manufacturer.name} + ' items'" ></h1>
 
     <div>
         <table class="table table-striped">
             <tr>
                 <th>Name</th>
-                <th></th>
+                <th>Colour</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Category</th>
             </tr>
 
-            <tr>
-                <td th:text="${manufacturer.name}"></td>
-               
+            <tr th:each="item : ${items}">
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.color}"></td>
+                <td th:text="${item.size}"></td>
+                <td th:text="${item.price}"></td>
+                <td th:text="${item.category.name}"></td>
             </tr>
         </table>
-
+        <a href="/manufacturerlist" class="btn btn-danger">Cancel</a>
     </div>
 </body>
 

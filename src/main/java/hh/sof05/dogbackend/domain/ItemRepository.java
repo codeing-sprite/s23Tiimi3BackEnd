@@ -9,4 +9,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface ItemRepository extends CrudRepository<Item, Long> {
     List<Item> findByCategory(Category category); 
     List<Item> findByManufacturer(Optional<Manufacturer> manufacturer);
+    List<Item> findByManufacturer(Manufacturer manufacturer);
 }

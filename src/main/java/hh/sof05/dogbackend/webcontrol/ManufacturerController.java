@@ -53,9 +53,9 @@ public class ManufacturerController {
     @GetMapping("manufacturer/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String listItemsOfManufacturer(@PathVariable("id") Long manufacturerId, Model model) {
-        model.addAttribute("manufacturer", manufacturerRepository.findById(manufacturerId));
-
-        return "manufacturer";
-    }
-
+        Manufacturer manufacturer = manufacturerRepository.findById(manufacturerId).get();
+        model.addAttribute("manufacturer", manufacturer);
+        model.addAttribute("items", itemRepository.findByManufacturer(manufacturer));
+        return "manufacturer"; 
+    } 
 }
