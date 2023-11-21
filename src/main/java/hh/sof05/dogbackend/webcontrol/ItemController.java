@@ -1,5 +1,7 @@
 package hh.sof05.dogbackend.webcontrol;
 
+import javax.naming.Binding;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -50,17 +52,17 @@ public class ItemController {
         return "additem";
     }
 
-    // Save added/edited item
-    @PostMapping("/saveitem")
+    // Save added item
+    @PostMapping("/additem/save")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public String saveItem(@Valid Item item, BindingResult bindingResult, Model model) {
+    public String saveNewItem(@Valid Item item, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("categories", categoryRepository.findAll());
             model.addAttribute("manufacturers", manufacturerRepository.findAll());
             return "additem";
         }
         itemRepository.save(item);
-        return "redirect:itemlist";
+        return "redirect:/itemlist";
     }
 
     // Delete an item from itemlist based on its id value
@@ -79,5 +81,17 @@ public class ItemController {
         model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("manufacturers", manufacturerRepository.findAll());
         return "edititem";
+    }
+
+    @PostMapping("/edit/save")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String saveEditedItem(@Valid Item item, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("categories", categoryRepository.findAll());
+            model.addAttribute("manufacturers", manufacturerRepository.findAll());
+            return "edititem";
+        }
+        itemRepository.save(item);
+        return "redirect:/itemlist";
     }
 }
