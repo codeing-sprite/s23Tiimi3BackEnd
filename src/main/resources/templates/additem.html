@@ -10,7 +10,7 @@
 <body>
     <h1>Add item</h1>
     <div>
-        <form th:object="${item}" th:action="@{saveitem}" action="#" method="post">
+        <form th:object="${item}" th:action="@{/additem/save}" action="#" method="post">
             <label for="name">Name: </label>
             <input type="text" id="name" th:field="*{name}">
             <label for="color">Color: </label>
@@ -19,6 +19,8 @@
             <input type="text" id="size" th:field="*{size}">
             <label for="price">Price: </label>
             <input type="text" id="price" th:field="*{price}">
+            <label for="stock">Stock: </label>
+            <input type="text" id="stock" th:field="*{stock}">
             <select id="categorylist" th:field="*{category}">
                 <option th:each="category : ${categories}" th:value="${category.id}"
                     th:text="${category.name}">

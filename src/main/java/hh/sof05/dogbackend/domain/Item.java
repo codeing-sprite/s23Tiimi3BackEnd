@@ -7,6 +7,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity(name="items")
 public class Item {
@@ -15,10 +18,16 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
+
+    @NotBlank(message = "Name is mandatory")
+    @Size(min = 1, max = 100)
     private String name;
     private String color;
     private String size;
+
+    @NotNull(message = "Price is mandatory")
     private double price;
+    @NotNull(message = "Stock is mandatory")
     private int stock;
 
     @ManyToOne
