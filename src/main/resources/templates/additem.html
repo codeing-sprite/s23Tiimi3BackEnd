@@ -19,6 +19,8 @@
             <input type="text" id="size" th:field="*{size}">
             <label for="price">Price: </label>
             <input type="text" id="price" th:field="*{price}">
+            <label for="stock">Stock: </label>
+            <input type="text" id="stock" th:field="*{stock}">
             <select id="categorylist" th:field="*{category}">
                 <option th:each="category : ${categories}" th:value="${category.id}"
                     th:text="${category.name}">

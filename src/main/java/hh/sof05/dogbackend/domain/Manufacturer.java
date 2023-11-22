@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity(name="manufacturers")
 public class Manufacturer {
@@ -20,6 +21,7 @@ public class Manufacturer {
     private Long id;
 
     @NotBlank(message = "Name is mandatory")
+    @Size(min = 1, max = 100)
     private String name;
 
     @JsonIgnore

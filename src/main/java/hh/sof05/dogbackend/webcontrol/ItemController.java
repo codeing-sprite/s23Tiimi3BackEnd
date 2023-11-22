@@ -1,6 +1,6 @@
 package hh.sof05.dogbackend.webcontrol;
 
-import javax.naming.Binding;
+// import javax.naming.Binding;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
