@@ -7,7 +7,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
@@ -22,6 +24,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(antMatcher("/")).permitAll()
                         .requestMatchers(antMatcher("/login")).permitAll()
                         .requestMatchers(antMatcher("/css/**")).permitAll()
                         .requestMatchers(antMatcher("/h2-console/**")).permitAll()
@@ -33,11 +36,20 @@ public class WebSecurityConfig {
                         .frameOptions(frameoptions -> frameoptions
                                 .disable()))
                 .formLogin(formlogin -> formlogin
+                        .loginPage("/login")
                         .defaultSuccessUrl("/itemlist", true)
-                        .permitAll())
+                        .permitAll()
+                        )
                 .logout(logout -> logout
-                        .permitAll());
+                        .permitAll())
+                .exceptionHandling(exception -> exception
+                        .authenticationEntryPoint(unauthorizedEntryPoint()));
         return http.build();
+    }
+
+    @Bean
+    public AuthenticationEntryPoint unauthorizedEntryPoint() {
+        return new CustomAuthenticationEntryPoint("/");
     }
 
     @Autowired

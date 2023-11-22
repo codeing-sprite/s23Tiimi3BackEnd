@@ -16,6 +16,11 @@ public class UserController {
 	
 	@Autowired
     private UserRepository userRepository;
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 	
     @GetMapping(value="/userlist")
     @PreAuthorize("hasAuthority('ADMIN')")
