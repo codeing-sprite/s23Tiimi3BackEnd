@@ -6,6 +6,16 @@
     <title>Items</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+
+    <script type="text/javascript">
+        const deleteProduct = () => {
+            if(window.confirm("Are you sure?")) {
+                return true;
+            } else {
+                return false;
+            }   
+        }
+    </script>
 </head>
 
 <body>
@@ -41,7 +51,7 @@
                 <td th:text="${item.category.name}"></td>
                 <td th:text="${item.stock}"></td>
                 <td><a th:href="@{/edit/{id}(id=${item.id})}" class="btn btn-warning">Edit</a></td>
-                <td><a th:href="@{/delete/{id}(id=${item.id})}" class="btn btn-danger">Delete</a></td>
+                <td><a onclick="return deleteProduct()" th:href="@{/delete/{id}(id=${item.id})}" class="btn btn-danger">Delete</a></td>
 
             </tr>
         </table>
