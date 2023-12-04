@@ -1,5 +1,9 @@
 package hh.sof05.dogbackend.domain;
 
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -37,6 +42,10 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "item")
+    private Set<Order> orders;
 
     public Item() {
     }
@@ -114,4 +123,13 @@ public class Item {
     public void setStock(int stock) {
         this.stock = stock;
     }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
 }

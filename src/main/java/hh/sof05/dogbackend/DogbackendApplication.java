@@ -13,6 +13,8 @@ import hh.sof05.dogbackend.domain.Item;
 import hh.sof05.dogbackend.domain.ItemRepository;
 import hh.sof05.dogbackend.domain.Manufacturer;
 import hh.sof05.dogbackend.domain.ManufacturerRepository;
+import hh.sof05.dogbackend.domain.OrderStatus;
+import hh.sof05.dogbackend.domain.OrderStatusRepository;
 import hh.sof05.dogbackend.domain.User;
 import hh.sof05.dogbackend.domain.UserRepository;
 
@@ -27,7 +29,7 @@ public class DogbackendApplication {
 
 	@Bean
 	public CommandLineRunner commandRunner(ItemRepository itemRepository, CategoryRepository categoryRepository,
-			ManufacturerRepository manufacturerRepository, UserRepository userRepository) {
+			ManufacturerRepository manufacturerRepository, UserRepository userRepository, OrderStatusRepository orderStatusRepository) {
 		return (args) -> {
 
 			log.info("Saving a couple of categories");
@@ -39,6 +41,11 @@ public class DogbackendApplication {
 			Manufacturer manufacturer1 = manufacturerRepository.save(new Manufacturer("Hurtta"));
 			Manufacturer manufacturer2 = manufacturerRepository.save(new Manufacturer("Royal Canin"));
 			Manufacturer manufacturer3 = manufacturerRepository.save(new Manufacturer("Pro Dog"));
+
+			log.info("Saving order statuses");
+			OrderStatus status1 = orderStatusRepository.save(new OrderStatus("Order placed"));
+			OrderStatus status2 = orderStatusRepository.save(new OrderStatus("Order delivered"));
+			OrderStatus status3 = orderStatusRepository.save(new OrderStatus("Order cancelled"));
 
 			log.info("Saving a couple of products");
 			itemRepository.save(new Item("Dog jacket", "Blue", "Medium", 26.95, manufacturer1, category1, 10));

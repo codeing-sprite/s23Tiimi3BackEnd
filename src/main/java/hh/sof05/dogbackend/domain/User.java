@@ -1,10 +1,15 @@
 package hh.sof05.dogbackend.domain;
 
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity(name="users")
 public class User {
@@ -25,6 +30,10 @@ public class User {
 
     @Column(name = "role", nullable = false)
     private String role;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<Order> orders;
 
     public User() {
     }
