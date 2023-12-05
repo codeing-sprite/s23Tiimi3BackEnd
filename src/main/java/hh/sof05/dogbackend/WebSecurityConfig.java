@@ -53,9 +53,9 @@ public class WebSecurityConfig {
                                                 .defaultSuccessUrl("/itemlist", true)
                                                 .permitAll())
                                 .logout(logout -> logout
-                                                .permitAll())
-                                .exceptionHandling(exception -> exception
-                                                .authenticationEntryPoint(unauthorizedEntryPoint()));
+                                                .permitAll());
+                                // .exceptionHandling(exception -> exception
+                                //                 .authenticationEntryPoint(unauthorizedEntryPoint()));
                 return http.build();
         }
 

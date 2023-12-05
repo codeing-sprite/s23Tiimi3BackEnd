@@ -23,7 +23,11 @@
             <div class="pt-2 pb-4"><input type="submit" value="Log In" class="btn btn-primary" /></div>
         </form>
         <a href="@{/}" class="btn btn-outline-primary">Home</a>
-        <a href="/resetdb" class="btn btn-primary">reset db</a>
+        <form th:action="@{/resetdb}" method="get">
+            <input type="submit" value="Reset db"/>
+        </form>
+        
+        
     </div>
 </body>
 
