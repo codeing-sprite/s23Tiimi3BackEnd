@@ -58,7 +58,7 @@ public class IndexController {
 			userRepository.save(new User("admin", "$2a$12$aQLOSgr68.ZYV71E32Hb/Ou3nO5uMS3fO/z3wp9hYsbCeJFKjr9fy",
 					"admin@admin.com", "ADMIN"));
 		
-        return "login";
+        return "/login";
     }
 
 }
