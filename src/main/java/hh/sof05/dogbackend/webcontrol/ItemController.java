@@ -29,8 +29,6 @@ public class ItemController {
     @Autowired
     ManufacturerRepository manufacturerRepository;
 
-    // Add @PreAuthorize to all methods?
-
     // List all items
     @GetMapping("/itemlist")
     @PreAuthorize("hasAuthority('ADMIN')")
