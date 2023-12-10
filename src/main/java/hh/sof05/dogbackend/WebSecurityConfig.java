@@ -41,7 +41,7 @@ public class WebSecurityConfig {
                                                 .requestMatchers(antMatcher("/")).permitAll()
                                                 .requestMatchers(antMatcher("/login")).permitAll()
                                                 .requestMatchers(antMatcher("/css/**")).permitAll()
-                                                // .requestMatchers(antMatcher("/h2-console/**")).permitAll()
+                                                .requestMatchers(antMatcher("/h2-console/**")).permitAll()
                                                 .requestMatchers(antMatcher("/rest/**")).permitAll()
                                                 .anyRequest().authenticated())
 
@@ -53,9 +53,9 @@ public class WebSecurityConfig {
                                                 .defaultSuccessUrl("/itemlist", true)
                                                 .permitAll())
                                 .logout(logout -> logout
-                                                .permitAll());
-                                // .exceptionHandling(exception -> exception
-                                //                 .authenticationEntryPoint(unauthorizedEntryPoint()));
+                                                .permitAll())
+                                .exceptionHandling(exception -> exception
+                                                .authenticationEntryPoint(unauthorizedEntryPoint()));
                 return http.build();
         }
 
