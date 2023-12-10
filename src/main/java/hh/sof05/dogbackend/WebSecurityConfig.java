@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
+
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 import java.util.Arrays;
@@ -44,8 +44,7 @@ public class WebSecurityConfig {
                                                 .requestMatchers(antMatcher("/h2-console/**")).permitAll()
                                                 .requestMatchers(antMatcher("/rest/**")).permitAll()
                                                 .anyRequest().authenticated())
-                                .csrf(csrf -> csrf
-                                                .ignoringRequestMatchers(toH2Console()))
+
                                 .headers(headers -> headers
                                                 .frameOptions(frameoptions -> frameoptions
                                                                 .disable()))
