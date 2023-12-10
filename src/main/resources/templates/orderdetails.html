@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Order details</title>
+</head>
+
+<body>
+    <h1>Order details</h1>
+
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Item</th>
+                <th>Client</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th></th>
+
+            </tr>
+
+            <tr>
+                <td th:text="${order.item.name}"></td>
+                <td th:text="${client.username}"></td>
+                <td th:text="${order.quantity}"></td>
+                <td>
+                    <form th:object="${order}" th:action="@{/orderlist/order/save}" method="post">
+                        <input type="hidden" th:field="*{id}" readonly>
+                        <input type="hidden" th:field="*{quantity}" readonly>
+                        <input type="hidden" th:field="*{user}" readonly>
+                        <input type="hidden" th:field="*{item}" readonly>
+                        <select id="statuslist" th:field="*{status}">
+                            <option th:each="status : ${statuses}"
+                                    th:value="${status.id}"
+                                    th:text="${status.name}">
+                            </option>
+                        </select>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <a href="/orderlist" class="btn btn-danger">Back</a>
+</body>
+
+</html>

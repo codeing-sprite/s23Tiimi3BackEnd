@@ -1,5 +1,6 @@
 package hh.sof05.dogbackend.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,9 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
+    private int quantity;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -28,7 +32,8 @@ public class Order {
 
     public Order() {}
 
-    public Order(User user, Item item, OrderStatus status) {
+    public Order(int quantity, User user, Item item, OrderStatus status) {
+        this.quantity = quantity;
         this.user = user;
         this.item = item;
         this.status = status;
@@ -64,6 +69,14 @@ public class Order {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
 }
