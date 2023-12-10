@@ -4,6 +4,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,7 +45,7 @@ public class Item {
     private Category category;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "item")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "item")
     private Set<Order> orders;
 
     public Item() {
