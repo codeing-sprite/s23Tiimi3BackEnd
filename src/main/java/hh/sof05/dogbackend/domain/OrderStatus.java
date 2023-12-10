@@ -20,7 +20,7 @@ public class OrderStatus {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "status") // orderstatus, orderStatus, orderstatuses, status?
+    @OneToMany(mappedBy = "status")
     private Set<Order> orders;
 
     public OrderStatus() {}
