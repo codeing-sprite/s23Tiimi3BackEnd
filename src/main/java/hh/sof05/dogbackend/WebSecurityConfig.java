@@ -16,7 +16,7 @@ import static org.springframework.boot.autoconfigure.security.servlet.PathReques
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 import java.util.Arrays;
-import java.util.List;
+
 
 @Configuration
 @EnableMethodSecurity(securedEnabled = true)
@@ -32,7 +32,7 @@ public class WebSecurityConfig {
                                         CorsConfiguration configuration = new CorsConfiguration();
                                         configuration.setAllowedOrigins(Arrays.asList("*"));
                                         configuration.setAllowedMethods(Arrays.asList("*"));
-                                        configuration.setAllowedHeaders(List.of("*"));
+                                        configuration.setAllowedHeaders(Arrays.asList("*"));
                                         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
                                         source.registerCorsConfiguration("/**", configuration);
                                         cors.configurationSource(request -> configuration);
