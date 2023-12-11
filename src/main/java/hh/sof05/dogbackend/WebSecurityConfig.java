@@ -41,7 +41,7 @@ public class WebSecurityConfig {
                                                 .requestMatchers(antMatcher("/")).permitAll()
                                                 .requestMatchers(antMatcher("/login")).permitAll()
                                                 .requestMatchers(antMatcher("/css/**")).permitAll()
-                                                .requestMatchers(antMatcher("/h2-console/**")).permitAll()
+                                                // .requestMatchers(antMatcher("/h2-console/**")).permitAll()
                                                 .requestMatchers(antMatcher("/rest/**")).permitAll()
                                                 .anyRequest().authenticated())
 
