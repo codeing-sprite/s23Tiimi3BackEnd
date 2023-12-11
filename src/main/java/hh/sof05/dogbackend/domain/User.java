@@ -1,10 +1,16 @@
 package hh.sof05.dogbackend.domain;
 
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity(name="users")
 public class User {
@@ -25,6 +31,10 @@ public class User {
 
     @Column(name = "role", nullable = false)
     private String role;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user")
+    private Set<Order> orders;
 
     public User() {
     }
@@ -74,6 +84,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 
 }

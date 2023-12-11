@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Orderlist</title>
+</head>
+
+<body>
+    <h1>Clients with orders</h1>
+
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Client</th>
+                <th>Orders</th>
+
+            </tr>
+
+            <tr th:each="client : ${clients}">
+                <td><a th:href="@{/orderlist/{id}(id=${client.id})}" th:text="${client.username}"></a></td>
+                <td th:text="${client.orders.size}"></td>
+            </tr>
+        </table>
+        <a href="/itemlist" class="btn btn-danger">Back</a>
+</body>
+
+</html>

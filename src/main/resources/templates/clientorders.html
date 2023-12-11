@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Orders</title>
+</head>
+
+<body>
+    <h1 th:text="'Orders by' + ' ' + ${client.username}"></h1>
+
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th></th>
+
+            </tr>
+
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.item.name}"></td>
+                <td th:text="${order.quantity}"></td>
+                <td th:text="${order.status.name}"></td>
+                <td><a th:href="@{/orderlist/order/{id}(id=${order.id})}" class="btn btn-primary">Update</a></td>
+            </tr>
+        </table>
+        <a href="/orderlist" class="btn btn-danger">Back</a>
+</body>
+
+</html>
