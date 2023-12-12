@@ -1,3 +1,3 @@
 # Dog Back-end
 
-> https://dogbackend-knkh.onrender.com/
+> https://doggystore.onrender.com/
